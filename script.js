@@ -7,19 +7,27 @@ document.addEventListener('DOMContentLoaded', function() {
         rootMargin: "0px 0px -100px 0px"
     };
 
-    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            }
-            entry.target.classList.add('visible');
-            appearOnScroll.unobserve(entry.target);
-        });
-    }, appearOptions);
+    // Only apply fade-in on larger screens
+    if (window.innerWidth > 768) {
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+                entry.target.classList.add('visible');
+                appearOnScroll.unobserve(entry.target);
+            });
+        }, appearOptions);
 
-    faders.forEach(fader => {
-        appearOnScroll.observe(fader);
-    });
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    } else {
+        // If on mobile, make all faders visible immediately
+        faders.forEach(fader => {
+            fader.classList.add('visible');
+        });
+    }
 
     // Terminal Typing Effect
     const typingElement = document.getElementById('typing-effect');

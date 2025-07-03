@@ -41,7 +41,7 @@ section:hover {
 }
 
 section h2 {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     color: rgb(180, 110, 255);
     margin-top: 0;
     display: flex;
@@ -244,5 +244,37 @@ footer {
 @media (max-width: 768px) {
     .comparison {
         flex-direction: column;
+    }
+
+    /* Disable fade-in effect for smaller screens */
+    .fade-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Adjust padding for smaller screens */
+    main {
+        padding: 1rem;
+    }
+
+    section {
+        padding: 1.5rem;
+    }
+
+    .feature-card {
+        padding: 1rem;
+    }
+
+    .roadmap-step {
+        padding: 1rem 1.5rem;
+    }
+
+    .link-card {
+        padding: 0.8rem 1rem;
     }
 }
